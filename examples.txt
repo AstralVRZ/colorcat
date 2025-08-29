@@ -1,0 +1,37 @@
+This is a test file to test all the colors!
+And styles!
+
+:b;Black
+:bl;Blue
+:c;Cyan
+:g;Green
+:m;Magenta
+:r;Red
+:w;White
+:y;Yellow
+
+:bb;Bright Black
+:bbl;Bright Blue
+:bc;Bright Cyan
+:bg;Bright Green
+:bm;Bright Magenta
+:br;Bright Red
+:bw;Bright White
+:by;Bright Yellow
+
+:B;Bold
+:I;Italic
+:U;Underline
+:D;Dim
+:R;Reverse
+
+:b;Normal Black     :bb;Bright Black
+:bl;Normal Blue      :bbl;Bright Blue
+:c;Normal Cyan      :bc;Bright Cyan
+:g;Normal Green     :bg;Bright Green
+:m;Normal Magenta   :bm;Bright Magenta
+:r;Normal Red       :br;Bright Red
+:w;Normal White     :bw;Bright White
+:y;Normal Yellow    :by;Bright Yellow
+
+:y;Half yellow, :r;half red.
