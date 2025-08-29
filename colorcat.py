@@ -5,13 +5,34 @@ import subprocess
 
 # Mapping markers to Fish set_color keywords
 MARKERS = {
-    'y': 'yellow',   # Yellow
-    'g': 'green',    # Green
-    'r': 'red',      # Red
-    'B': '-o',       # Bold text
-    'I': '-i',       # Italic text
-    'R': 'normal'    # Reset to normal formatting
+    # Normal colors
+    'b': 'black',       # Black
+    'bl': 'blue',       # Blue
+    'c': 'cyan',        # Cyan
+    'g': 'green',      # Green
+    'm': 'magenta',    # Magenta
+    'r': 'red',        # Red
+    'w': 'white',     # White
+    'y': 'yellow',     # Yellow
+
+    # Bright colors
+    'bb': 'brblack',    # Bright Black
+    'bbl': 'brblue',     # Bright Blue
+    'bc': 'brcyan',     # Bright Cyan
+    'bg': 'brgreen',    # Bright Green
+    'bm': 'brmagenta',  # Bright Magenta
+    'br': 'brred',      # Bright Red
+    'bw': 'brwhite',    # Bright White
+    'by': 'bryellow',   # Bright Yellow
+    
+    # Styles
+    'I': '-i',          # Italic
+    'B': '-o',          # Bold
+    'U': '-u',          # Underline
+    'D': '-d',          # Dim
+    'R': '-r',          # Reverse
 }
+
 
 def fish_set_color(color_keyword):
     """
@@ -26,9 +47,11 @@ def colorize(line):
     This ensures the terminal interprets and renders the formatting.
     """
     output = ""
+    # Sort marker keys by length descending to match longest first
+    marker_regex = '|'.join(sorted(MARKERS.keys(), key=len, reverse=True))
+    pattern = re.compile(r'(.*?):(' + marker_regex + r')(;)?')
     while line:
-        match = re.match(
-            r'(.*?)::([' + ''.join(MARKERS.keys()) + r'])(;;)?', line)
+        match = pattern.match(line)
         if match:
             output += match.group(1)  # Text before the marker
             ansi = fish_set_color(MARKERS[match.group(2)])  # Execute set_color
