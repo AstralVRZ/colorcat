@@ -31,6 +31,7 @@ MARKERS = {
     'U': '-u',          # Underline
     'D': '-d',          # Dim
     'R': '-r',          # Reverse
+    'N': 'normal',      # Normal (reset styles)
 }
 
 
