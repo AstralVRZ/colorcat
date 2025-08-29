@@ -68,7 +68,7 @@ To get give the text you want to be read out to your terminal a color or style, 
 | :D; | dim |
 | :I; | *italic* |
 | :N; | reset/normal |
-| :R; | reverse |
+| :R; | reverse (background and text color) |
 | :U; | underline |
 
 Styles and colors can be combined by placing them one after another, styles will get reset on a new line, and the color can be changed in a single line.
