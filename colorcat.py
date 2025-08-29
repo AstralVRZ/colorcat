@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import re
 
@@ -5,31 +6,31 @@ import re
 MARKERS = {
     # Normal colors
     'b': '\033[30m',       # Black
-    'r': '\033[31m',       # Red
-    'g': '\033[32m',       # Green
-    'y': '\033[33m',       # Yellow
     'bl': '\033[34m',      # Blue
-    'm': '\033[35m',       # Magenta
     'c': '\033[36m',       # Cyan
+    'g': '\033[32m',       # Green
+    'm': '\033[35m',       # Magenta
+    'r': '\033[31m',       # Red
     'w': '\033[37m',       # White
+    'y': '\033[33m',       # Yellow
 
     # Bright colors
     'bb': '\033[90m',      # Bright Black
-    'br': '\033[91m',      # Bright Red
-    'bg': '\033[92m',      # Bright Green
-    'by': '\033[93m',      # Bright Yellow
     'bbl': '\033[94m',     # Bright Blue
-    'bm': '\033[95m',      # Bright Magenta
     'bc': '\033[96m',      # Bright Cyan
+    'bg': '\033[92m',      # Bright Green
+    'bm': '\033[95m',      # Bright Magenta
+    'br': '\033[91m',      # Bright Red
     'bw': '\033[97m',      # Bright White
+    'by': '\033[93m',      # Bright Yellow
 
     # Styles
     'B': '\033[1m',        # Bold
     'D': '\033[2m',        # Dim
     'I': '\033[3m',        # Italic
-    'U': '\033[4m',        # Underline
-    'R': '\033[7m',        # Reverse
     'N': '\033[0m',        # Reset/Normal
+    'R': '\033[7m',        # Reverse
+    'U': '\033[4m',        # Underline
 }
 
 
