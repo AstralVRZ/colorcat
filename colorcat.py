@@ -8,8 +8,8 @@ MARKERS = {
     'y': 'yellow',   # Yellow
     'g': 'green',    # Green
     'r': 'red',      # Red
-    'B': '-o',     # Bold text
-    'I': '-i',   # Italic text
+    'B': '-o',       # Bold text
+    'I': '-i',       # Italic text
     'R': 'normal'    # Reset to normal formatting
 }
 
@@ -27,7 +27,8 @@ def colorize(line):
     """
     output = ""
     while line:
-        match = re.match(r'(.*?)::([ygrBIR])', line)
+        match = re.match(
+            r'(.*?)::([' + ''.join(MARKERS.keys()) + r'])(;;)?', line)
         if match:
             output += match.group(1)  # Text before the marker
             ansi = fish_set_color(MARKERS[match.group(2)])  # Execute set_color
