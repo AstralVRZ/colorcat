@@ -38,35 +38,35 @@ To get give the text you want to be read out to your terminal a color or style, 
 
  Syntax | Color |
 | ----------- | ----------- |
-| :b; | black |
-| :bl; | blue |
-| :c; | cyan |
-| :g; | green |
-| :m; | magenta |
-| :r; | red |
-| :w; | white |
-| :y; | yellow |
+| :b; | black ⚫ |
+| :bl; | blue 🔵 |
+| :c; | cyan 🔵 |
+| :g; | green 🟢 |
+| :m; | magenta 🟣 |
+| :r; | red 🔴 |
+| :w; | white ⚪ |
+| :y; | yellow 🟡 |
 
 ### Bright Colors
 
  Syntax | Color |
 | ----------- | ----------- |
-| :bb; | bright black |
-| :bbl; | bright blue |
-| :bc; | bright cyan |
-| :bg; | bright green |
-| :bm; | bright magenta |
-| :br; | bright red |
-| :bw; | bright white |
-| :by; | bright yellow |
+| :bb; | bright black ⚫ |
+| :bbl; | bright blue 🔵 |
+| :bc; | bright cyan 🔵 |
+| :bg; | bright green 🟢 |
+| :bm; | bright magenta 🟣 |
+| :br; | bright red 🔴 |
+| :bw; | bright white ⚪ |
+| :by; | bright yellow 🟡 |
 
 ### Styles
 
  Syntax | Style |
 | ----------- | ----------- |
-| :B; | bold |
+| :B; | **bold** |
 | :D; | dim |
-| :I; | italic |
+| :I; | *italic* |
 | :N; | reset/normal |
 | :R; | reverse |
 | :U; | underline |
