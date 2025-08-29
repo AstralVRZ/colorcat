@@ -8,8 +8,8 @@ MARKERS = {
     'y': 'yellow',   # Yellow
     'g': 'green',    # Green
     'r': 'red',      # Red
-    'B': 'bold',     # Bold text
-    'I': 'italic',   # Italic text
+    'B': '-o',     # Bold text
+    'I': '-i',   # Italic text
     'R': 'normal'    # Reset to normal formatting
 }
 
