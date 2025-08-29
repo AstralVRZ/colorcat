@@ -1,80 +1,71 @@
-#!/usr/bin/env python3
 import sys
 import re
-import subprocess
 
-# Mapping markers to Fish set_color keywords
+# Define the color mappings
 MARKERS = {
     # Normal colors
-    'b': 'black',       # Black
-    'bl': 'blue',       # Blue
-    'c': 'cyan',        # Cyan
-    'g': 'green',      # Green
-    'm': 'magenta',    # Magenta
-    'r': 'red',        # Red
-    'w': 'white',     # White
-    'y': 'yellow',     # Yellow
+    'b': '\033[30m',       # Black
+    'r': '\033[31m',       # Red
+    'g': '\033[32m',       # Green
+    'y': '\033[33m',       # Yellow
+    'bl': '\033[34m',      # Blue
+    'm': '\033[35m',       # Magenta
+    'c': '\033[36m',       # Cyan
+    'w': '\033[37m',       # White
 
     # Bright colors
-    'bb': 'brblack',    # Bright Black
-    'bbl': 'brblue',     # Bright Blue
-    'bc': 'brcyan',     # Bright Cyan
-    'bg': 'brgreen',    # Bright Green
-    'bm': 'brmagenta',  # Bright Magenta
-    'br': 'brred',      # Bright Red
-    'bw': 'brwhite',    # Bright White
-    'by': 'bryellow',   # Bright Yellow
-    
+    'bb': '\033[90m',      # Bright Black
+    'br': '\033[91m',      # Bright Red
+    'bg': '\033[92m',      # Bright Green
+    'by': '\033[93m',      # Bright Yellow
+    'bbl': '\033[94m',     # Bright Blue
+    'bm': '\033[95m',      # Bright Magenta
+    'bc': '\033[96m',      # Bright Cyan
+    'bw': '\033[97m',      # Bright White
+
     # Styles
-    'I': '-i',          # Italic
-    'B': '-o',          # Bold
-    'U': '-u',          # Underline
-    'D': '-d',          # Dim
-    'R': '-r',          # Reverse
-    'N': 'normal',      # Normal (reset styles)
+    'B': '\033[1m',        # Bold
+    'D': '\033[2m',        # Dim
+    'I': '\033[3m',        # Italic
+    'U': '\033[4m',        # Underline
+    'R': '\033[7m',        # Reverse
+    'N': '\033[0m',        # Reset/Normal
 }
 
 
-def fish_set_color(color_keyword):
-    """
-    Run the Fish shell command 'set_color <color_keyword>',
-    capturing its ANSI escape code output.
-    """
-    return subprocess.check_output(['fish', '-c', f'set_color {color_keyword}'], text=True)
-
 def colorize(line):
-    """
-    Replace markers like ::y, ::I, etc. with actual ANSI codes from Fish.
-    This ensures the terminal interprets and renders the formatting.
-    """
+    """ Replace color markers like :y;, :B;, :bg; etc. in the text. """
     output = ""
     # Sort marker keys by length descending to match longest first
     marker_regex = '|'.join(sorted(MARKERS.keys(), key=len, reverse=True))
     pattern = re.compile(r'(.*?):(' + marker_regex + r')(;)?')
     while line:
+        # Find marker (e.g., :y;)
         match = pattern.match(line)
         if match:
-            output += match.group(1)  # Text before the marker
-            ansi = fish_set_color(MARKERS[match.group(2)])  # Execute set_color
-            output += ansi
-            line = line[len(match.group(0)):]  # Remove processed part
+            # Add text before the marker
+            output += match.group(1)
+            # Add color formatting
+            output += MARKERS[match.group(2)]
+            # Remove marker and text processed
+            line = line[len(match.group(0)):]
         else:
             output += line
             break
     # Append reset/normal formatting at the end to avoid bleed-through
-    output += fish_set_color('normal')
+    output += MARKERS['N']
     return output
 
+
 def main():
-    """Reads the given file and outputs colorized content line by line."""
+    """ Main function to read file and output colored content. """
     if len(sys.argv) < 2:
         print("Usage: colorcat <file>")
         sys.exit(1)
-
     try:
         with open(sys.argv[1], 'r') as file:
             for line in file:
-                print(colorize(line.rstrip()))
+                print(colorize(line.rstrip()))  # colorize each line and print
     except FileNotFoundError:
         print(f"Error: File not found: {sys.argv[1]}", file=sys.stderr)
         sys.exit(1)
