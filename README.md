@@ -1,42 +1,64 @@
+
 # About colorcat
 
 A simple python script to print colored and styled text from a file to your terminal!
 I originally created this because I wanted to show my todo list in a more visually appealing way when I open my terminal. But now it can be used for any text file!
 
-# How to install:
-You can install colorcat by cloning the repository and running the script directly, or by copying the script to a directory in your PATH.
+## Installation
+
+Clone the repository and run the script directly, or copy it to a directory in your PATH for global access.
 
 ```bash
 git clone https://github.com/AstralVRZ/colorcat.git
 cd colorcat
 ```
 
-Then you can run the script with:
+### Running colorcat
+
+Run the script with:
 
 ```bash
-python colorcat.py <file>
+python colorcat.py [-d [delay]] <file>
 ```
 
-Or, to make it globally accessible, copy it to a directory in your PATH:
+- `-d [delay]` (optional): Set a custom delay (in seconds) between lines. Default is `0.05`.
+
+#### Examples
+
+```bash
+python colorcat.py -d ~/Documents/todo.txt      # Uses default delay (0.05)
+python colorcat.py -d 0.1 ~/Documents/todo.txt  # Uses custom delay (0.1)
+python colorcat.py ~/Documents/todo.txt         # Instant output (no delay)
+```
+
+### Make colorcat Globally Accessible
+
+Copy the script to a directory in your PATH:
 
 ```bash
 sudo cp colorcat.py /usr/local/bin/colorcat
 sudo chmod +x /usr/local/bin/colorcat
 ```
-If you want another path directory, run `echo $PATH` to see your PATH directories.
 
-Now you can use it from anywhere:
+Check your PATH directories with:
+
+```bash
+echo $PATH
+```
+
+Now you can run colorcat from anywhere:
 
 ```bash
 colorcat <file>
 ```
 
-# Color syntax:
-To get give the text you want to be read out to your terminal a color or style, use the following syntax in your text file:
+## Color syntax
+
+To give the text you want to be read out to your terminal a color or style, use the following syntax in your text file:
 
 ### Colors
 
- Syntax | Color |
+| Syntax | Color |
 | ----------- | ----------- |
 | :b; | black ⚫ |
 | :bl; | blue 🔵 |
@@ -49,7 +71,7 @@ To get give the text you want to be read out to your terminal a color or style, 
 
 ### Bright Colors
 
- Syntax | Color |
+| Syntax | Color |
 | ----------- | ----------- |
 | :bb; | bright black ⚫ |
 | :bbl; | bright blue 🔵 |
@@ -62,7 +84,7 @@ To get give the text you want to be read out to your terminal a color or style, 
 
 ### Styles
 
- Syntax | Style |
+| Syntax | Style |
 | ----------- | ----------- |
 | :B; | **bold** |
 | :D; | dim |
@@ -74,10 +96,12 @@ To get give the text you want to be read out to your terminal a color or style, 
 Styles and colors can be combined by placing them one after another, styles will get reset on a new line, and the color can be changed in a single line.
 Here is a quick example:
 
-```
+```txt
 :b;This text is black:r; and this text is red.
 :U;This text is underlined.
-:B;:U;This text is bold and underlined!
+:B;:U;This text is bold and underlined!Reorganize this part of the readme, line 7-54
+
+
 :g;:I;This text is green and italic.
 ```
 
