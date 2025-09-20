@@ -3,7 +3,7 @@ import sys
 import re
 import time
 
-slow = False               # set to True to print line by line with a delay
+delayMode = False          # set to True to print line by line with a delay
 delay = 0.05               # delay in seconds between lines
 
 # Define the color mappings
@@ -64,23 +64,50 @@ def colorize(line):
 
 def main():
     """ Main function to read file and output colored content. """
-    if len(sys.argv) < 2:
-        print("Usage: colorcat <file>")
+    # Globalize variables to decrease overhead
+    global delayMode, delay
+    args = sys.argv[1:]
+    filename = None
+    # Check if any arguments were provided
+    if not args:
+        print("Usage: colorcat [-d [delay]] <file>")
         sys.exit(1)
+    # Parse arguments
+    if args[0] == "-d":
+        delayMode = True
+        if len(args) == 2:  # only `-d` and <file> are provided
+            filename = args[1]
+        elif len(args) == 3:  # `-d`, [delay], and <file> are provided
+            try:
+                # Try to create a float from the delay argument
+                delay = float(args[1])
+            except ValueError:
+                print(f"Invalid delay value: {args[1]}", file=sys.stderr)
+                sys.exit(3)
+            filename = args[2]
+        else:
+            print("Usage: colorcat [-d [delay]] <file>")
+            sys.exit(1)
+    else:
+        # Only the filename is provided
+        if len(args) == 1:
+            filename = args[0]
+        else:
+            print("Usage: colorcat [-d [delay]] <file>")
+            sys.exit(1)
     try:
-        with open(sys.argv[1], 'r') as file:
+        with open(filename, 'r') as file:
             for line in file:
-                # colorize each line and print
+                # Parse line and print with colors
                 print(colorize(line.rstrip()))
-                # Add a delay to printing each line if slow mode is enabled
-                if slow:
+                if delayMode:
                     time.sleep(delay)
     except FileNotFoundError:
-        print(f"Error: File not found: {sys.argv[1]}", file=sys.stderr)
+        print(f"Error: File not found: {filename}", file=sys.stderr)
         sys.exit(2)
     except Exception as error:
-        print(f"Error: {error}")
-        sys.exit(3)
+        print(f"Error: {error}", file=sys.stderr)
+        sys.exit(99)
 
 
 if __name__ == '__main__':
