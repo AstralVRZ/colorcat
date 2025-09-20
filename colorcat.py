@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import sys
 import re
+import time
+
+slow = False               # set to True to print line by line with a delay
+delay = 0.05               # delay in seconds between lines
 
 # Define the color mappings
 MARKERS = {
@@ -66,10 +70,18 @@ def main():
     try:
         with open(sys.argv[1], 'r') as file:
             for line in file:
-                print(colorize(line.rstrip()))  # colorize each line and print
+                # colorize each line and print
+                print(colorize(line.rstrip()))
+                # Add a delay to printing each line if slow mode is enabled
+                if slow:
+                    time.sleep(delay)
     except FileNotFoundError:
         print(f"Error: File not found: {sys.argv[1]}", file=sys.stderr)
-        sys.exit(1)
+        sys.exit(2)
+    except Exception as error:
+        print(f"Error: {error}")
+        sys.exit(3)
+
 
 if __name__ == '__main__':
     main()
