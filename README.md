@@ -18,17 +18,7 @@ cd colorcat
 Run the script with:
 
 ```bash
-python colorcat.py [-d [delay]] <file>
-```
-
-- `-d [delay]` (optional): Set a custom delay (in seconds) between lines. Default is `0.05`.
-
-#### Examples
-
-```bash
-python colorcat.py -d ~/Documents/todo.txt      # Uses default delay (0.05)
-python colorcat.py -d 0.1 ~/Documents/todo.txt  # Uses custom delay (0.1)
-python colorcat.py ~/Documents/todo.txt         # Instant output (no delay)
+python colorcat.py <file>
 ```
 
 ### Make colorcat Globally Accessible
@@ -50,6 +40,19 @@ Now you can run colorcat from anywhere:
 
 ```bash
 colorcat <file>
+```
+
+## Usage
+
+
+`-d [delay]` (optional): Set a custom delay (in seconds) between lines. Default is `5`.
+
+#### Examples
+
+```bash
+colorcat ~/Documents/todo.txt           # Instant output (no delay)
+colorcat -d ~/Documents/todo.txt        # Uses default delay (50ms)
+colorcat -d 100 ~/Documents/todo.txt     # Uses custom delay (100ms)
 ```
 
 ## Color syntax

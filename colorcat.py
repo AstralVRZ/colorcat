@@ -3,8 +3,8 @@ import sys
 import re
 import time
 
-delayMode = False          # set to True to print line by line with a delay
-delay = 0.05               # delay in seconds between lines
+delayMode = False           # set to True to print line by line with a delay
+delay = 50                  # delay in milliseconds between lines
 
 # Define the color mappings
 MARKERS = {
@@ -101,7 +101,7 @@ def main():
                 # Parse line and print with colors
                 print(colorize(line.rstrip()))
                 if delayMode:
-                    time.sleep(delay)
+                    time.sleep(delay / 1000)  # Convert ms to seconds
     except FileNotFoundError:
         print(f"Error: File not found: {filename}", file=sys.stderr)
         sys.exit(2)
