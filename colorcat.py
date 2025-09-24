@@ -35,6 +35,27 @@ MARKERS = {
     'N': '\033[0m',        # Reset/Normal
     'R': '\033[7m',        # Reverse
     'U': '\033[4m',        # Underline
+    
+    # Background colors
+    'bg_b': '\033[40m',    # Background Black
+    'bg_bl': '\033[44m',   # Background Blue
+    'bg_c': '\033[46m',    # Background Cyan
+    'bg_g': '\033[42m',    # Background Green
+    'bg_m': '\033[45m',    # Background Magenta
+    'bg_r': '\033[41m',    # Background Red
+    'bg_w': '\033[47m',    # Background White
+    'bg_y': '\033[43m',    # Background Yellow
+
+    # Bright background colors
+    'bg_bb': '\033[100m',   # Background Bright Black
+    'bg_bbl': '\033[104m',  # Background Bright Blue
+    'bg_bc': '\033[106m',   # Background Bright Cyan
+    'bg_bg': '\033[102m',   # Background Bright Green
+    'bg_bm': '\033[105m',   # Background Bright Magenta
+    'bg_br': '\033[101m',   # Background Bright Red
+    'bg_bw': '\033[107m',   # Background Bright White
+    'bg_by': '\033[103m',   # Background Bright Yellow
+
 }
 
 

@@ -1,30 +1,6 @@
 This is a test file to test all the colors!
 And styles!
 
-:b;Black
-:bl;Blue
-:c;Cyan
-:g;Green
-:m;Magenta
-:r;Red
-:w;White
-:y;Yellow
-
-:bb;Bright Black
-:bbl;Bright Blue
-:bc;Bright Cyan
-:bg;Bright Green
-:bm;Bright Magenta
-:br;Bright Red
-:bw;Bright White
-:by;Bright Yellow
-
-:B;Bold
-:I;Italic
-:U;Underline
-:D;Dim
-:R;Reverse
-
 :b;Normal Black     :bb;Bright Black
 :bl;Normal Blue      :bbl;Bright Blue
 :c;Normal Cyan      :bc;Bright Cyan
@@ -34,4 +10,24 @@ And styles!
 :w;Normal White     :bw;Bright White
 :y;Normal Yellow    :by;Bright Yellow
 
-:y;Half yellow, :r;half red.
+:bg_b;Black Background      :bg_bb;Bright Black Background  
+:bg_bl;Blue Background       :bg_bbl;Bright Blue Background 
+:bg_c;Cyan Background       :bg_bc;Bright Cyan Background   
+:bg_g;Green Background      :bg_bg;Bright Green Background  
+:bg_m;Magenta Background    :bg_bm;Bright Magenta Background
+:bg_r;Red Background        :bg_br;Bright Red Background    
+:bg_w;White Background      :bg_bw;Bright White Background  
+:bg_y;Yellow Background     :bg_by;Bright Yellow Background 
+
+:B;Bold
+:I;Italic
+:U;Underline
+:D;Dim
+:R;Reverse
+
+:B;Examples of combined styles:
+:bm;:I;Bright Magenta Italic
+:bg_b;:y;:U;Yellow Underlined on Black Background
+:bg_r;:D;Red Background Dim
+:bc;:R;Cyan Reverse
+:br;:B;Bright Red Bold

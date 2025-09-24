@@ -85,6 +85,32 @@ To give the text you want to be read out to your terminal a color or style, use 
 | :bw; | bright white ⚪ |
 | :by; | bright yellow 🟡 |
 
+### Background Colors
+
+| Syntax | Color |
+| ----------- | ----------- |
+| :bg_b; | black ⚫ |
+| :bg_bl; | blue 🔵 |
+| :bg_c; | cyan 🔵 |
+| :bg_g; | green 🟢 |
+| :bg_m; | magenta 🟣 |
+| :bg_r; | red 🔴 |
+| :bg_w; | white ⚪ |
+| :bg_y; | yellow 🟡 |
+
+### Bright Background Colors
+
+| Syntax | Color |
+| ----------- | ----------- |
+| :bg_bb; | bright black ⚫ |
+| :bg_bbl; | bright blue 🔵 |
+| :bg_bc; | bright cyan 🔵 |
+| :bg_bg; | bright green 🟢 |
+| :bg_bm; | bright magenta 🟣 |
+| :bg_br; | bright red 🔴 |
+| :bg_bw; | bright white ⚪ |
+| :bg_by; | bright yellow 🟡 |
+
 ### Styles
 
 | Syntax | Style |
