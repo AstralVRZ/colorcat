@@ -60,11 +60,14 @@ MARKERS = {
 
 
 def colorize(line):
-    """ Replace color markers like :y;, :B;, :bg; etc. in the text. """
+    # Skip marker: do not print anything for this line
+    if line.startswith(':S;'):
+        return None
+
     output = ""
-    # Sort marker keys by length descending to match longest first
     marker_regex = '|'.join(sorted(MARKERS.keys(), key=len, reverse=True))
     pattern = re.compile(r'(.*?):(' + marker_regex + r')(;)?')
+
     while line:
         # Find marker (e.g., :y;)
         match = pattern.match(line)
@@ -79,6 +82,7 @@ def colorize(line):
             output += line
             break
     # Append reset/normal formatting at the end to avoid bleed-through
+
     output += MARKERS['N']
     return output
 
@@ -120,7 +124,9 @@ def main():
         with open(filename, 'r') as file:
             for line in file:
                 # Parse line and print with colors
-                print(colorize(line.rstrip()))
+                colored = colorize(line.rstrip())
+                if colored is not None:
+                    print(colored)
                 if delayMode:
                     time.sleep(delay / 1000)  # Convert ms to seconds
     except FileNotFoundError:
