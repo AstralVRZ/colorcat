@@ -31,3 +31,8 @@ And styles!
 :bg_r;:D;Red Background Dim
 :bc;:R;Cyan Reverse
 :br;:B;Bright Red Bold
+
+:B;Skipped lines (do not print):
+The next line will be skipped and not printed
+:S;This line will be skipped and not printed
+Trust me, in the file there is a line between this one and the previous one!
