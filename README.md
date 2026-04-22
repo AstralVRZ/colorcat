@@ -122,6 +122,12 @@ To give the text you want to be read out to your terminal a color or style, use 
 | :R; | reverse (background and text color) |
 | :U; | underline |
 
+### Others
+
+| Syntax | Effect |
+| ----------- | ----------- |
+| :S; | Skip line (do not print) |
+
 Styles and colors can be combined by placing them one after another, styles will get reset on a new line, and the color can be changed in a single line.
 Here is a quick example:
 
